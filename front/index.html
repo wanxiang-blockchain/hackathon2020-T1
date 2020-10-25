@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .map {
+      width: 500px;
+      height: 500px;
+      margin: 0 auto;
+    }
+
+    .outBox {
+      width: 400px;
+      height: 40px;
+      overflow: hidden;
+      margin: 0 auto;
+      border: 1px solid #419BF9;
+      position: relative;
+      background-color: #2B2F33;
+      color: #ffffff;
+      border-radius: 4px;
+    }
+
+    .ulPmd {
+      width: 600px;
+      height: 40px;
+      position: absolute;
+      left: 0;
+      top: 0
+    }
+
+    .tpl-rotate-recordList-item {
+      color: red;
+    }
+    .recordList {
+      height: 300px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body style="background:url(banner_01.jpg) center no-repeat">
+  <!--    设置地图容器，需要设置宽高样式-->
+  <div id="main" class="map"></div>
+
+  <div class="recordList" style="text-align: center;">
+    <ul class="tpl-rotate-recordList" style="margin-top: 0px;">
+      <li class="tpl-rotate-recordList-item">
+        万向区块链申请黑客马拉松项目申请资金2000万
+      </li>
+      <li class="tpl-rotate-recordList-item">
+        万向区块链申请黑客马拉松项目申请资金1000万
+      </li>
+      <li class="tpl-rotate-recordList-item">
+        万向区块链申请黑客马拉松项目申请资金200万
+      </li>
+      <li class="tpl-rotate-recordList-item">
+        万向区块链申请黑客马拉松项目申请资金500万
+      </li>
+      <li class="tpl-rotate-recordList-item">
+        万向区块链申请黑客马拉松项目申请资金600万
+      </li>
+      <li class="tpl-rotate-recordList-item">
+        万向区块链申请黑客马拉松项目申请资金700万
+      </li>
+    </ul>
+  </div>
+
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/echarts.js"></script>
+<script src="js/china.js"></script>
+<script>
+  var myChart = echarts.init(document.getElementById('main'));
+  option = {
+    title: {
+      text: ''
+    },
+    tooltip: {},
+    animationDurationUpdate: 1500,
+    animationEasingUpdate: 'quinticInOut',
+    label: {
+      normal: {
+        show: true,
+        textStyle: {
+          fontSize: 12
+        },
+      }
+    },
+    legend: {
+      x: "center",
+      show: false,
+      data: ["夫妻", "战友", '亲戚']
+    },
+    series: [
+
+      {
+        type: 'graph',
+        layout: 'force',
+        symbolSize: 45,
+        focusNodeAdjacency: true,
+        roam: true,
+        categories: [{
+          name: '政府',
+          itemStyle: {
+            normal: {
+              color: "#001100",
+            }
+          }
+        }, {
+          name: '园区A',
+          itemStyle: {
+            normal: {
+              color: "#4592FF",
+            }
+          }
+        }, {
+          name: '园区B',
+          itemStyle: {
+            normal: {
+              color: "#3592F",
+            }
+          }
+        }],
+        label: {
+          normal: {
+            show: true,
+            textStyle: {
+              fontSize: 12
+            },
+          }
+        },
+        force: {
+          repulsion: 1000
+        },
+        edgeSymbolSize: [4, 50],
+        edgeLabel: {
+          normal: {
+            show: true,
+            textStyle: {
+              fontSize: 10
+            },
+            formatter: "{c}"
+          }
+        },
+        data: [{
+          name: '政府',
+          draggable: true,
+        }, {
+          name: '园区A',
+          category: 1,
+          draggable: true,
+          itemStyle: {                         // 各圆圈自定义样式
+            normal: {
+              borderColor: '#b457ff',
+              borderWidth: 1,
+              shadowBlur: 20,
+              shadowColor: '#b457ff',
+              color: new echarts.graphic.RadialGradient(0.8, 1, 1.0, [          // 由中心向四周渐变
+                {
+                  offset: 0,
+                  color: "rgba(180, 87, 255, 0.1)"
+                },
+                {
+                  offset: 1,
+                  color: "rgba(180, 87, 255, 1)"
+                }
+              ]),
+            }
+          }
+        }, {
+          name: '园区B',
+          category: 2,
+          draggable: true,
+          itemStyle: {                         // 各圆圈自定义样式
+            normal: {
+              borderColor: '#b457ff',
+              borderWidth: 1,
+              shadowBlur: 20,
+              shadowColor: '#b457ff',
+              color: new echarts.graphic.RadialGradient(0.5, 0.5, 1.0, [          // 由中心向四周渐变
+                {
+                  offset: 0,
+                  color: "rgba(10, 87, 255, 0.1)"
+                },
+                {
+                  offset: 1,
+                  color: "rgba(120, 27, 255, 1)"
+                }
+              ]),
+            }
+          }
+        }, {
+          name: '企业1',
+          category: 2,
+          draggable: true,
+        }, {
+          name: '企业2',
+          category: 2,
+          draggable: true,
+        }, {
+          name: '企业3',
+          category: 2,
+          draggable: true,
+        }, {
+          name: '企业4',
+          category: 2,
+          draggable: true,
+        }, {
+          name: '企业5',
+          category: 2,
+          draggable: true,
+        }, {
+          name: '企业6',
+          category: 2,
+          draggable: true,
+        }],
+        links: [{
+          source: 0,
+          target: 1,
+          category: 0,
+          value: '10'
+        }, {
+          source: 0,
+          target: 2,
+          value: '100'
+        }, {
+          source: 1,
+          target: 3,
+          value: '2'
+        }, {
+          source: 1,
+          target: 4,
+          value: '6'
+        }, {
+          source: 2,
+          target: 5,
+          value: '30'
+        }, {
+          source: 2,
+          target: 6,
+          value: '8'
+        }, {
+          source: 0,
+          target: 7,
+          value: '8'
+        }, {
+          source: 0,
+          target: 8,
+          value: '8'
+        }, {
+          source: 7,
+          target: 8,
+          value: '8'
+        }, {
+          source: 3,
+          target: 4,
+          value: '8'
+        }],
+        lineStyle: {
+          normal: {
+            opacity: 0.9,
+            width: 1,
+            curveness: 0
+          }
+        }
+      }
+    ]
+  };
+  myChart.setOption(option);
+  /*自动轮换xuyw*/
+  var AutoScroll = function (a) {
+    $(a).find("ul:first").animate({
+      marginTop: "-10px"
+    }, 500, function () {
+      $(this).css({
+        marginTop: "0px"
+      }).find("li:first").appendTo(this)
+    })
+  }
+  if ($(".recordList ul li").length > 0) {
+    setInterval('AutoScroll(".recordList")', 2000)
+  } else {
+    $(".recordList").hide()
+  }
+
+
+
+</script>
+
+</html>

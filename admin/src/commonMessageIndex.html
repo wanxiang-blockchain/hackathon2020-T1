@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <!-- 
+    HTML5 shim and Respond.js for IE
+    <link rel="shortcut icon" href="./favicon.ico">
+    -->
+    <title>GBC后台管理系统</title>
+    <style type="text/css">
+        html,body,#gbcContainer{
+            height:100%;
+            padding: 0;
+            margin: 0;
+            background:#fff;
+        }
+        #comAdminContainer>div{
+            height:100%;
+        }
+        #iframeLoading{
+            position: absolute;
+            z-index: 1000;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top:0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gbcContainer"></div>
+    <script type="text/javascript">
+    
+    let realRequestUrl = "r-e-a-l-R-e-q-u-e-s-t-U-r-l";
+    if(realRequestUrl.split('-').join('') === 'realRequestUrl'){
+        //测试地址
+        realRequestUrl = 'http://10.200.195.1:10011';
+        // realRequestUrl = 'http://172.25.0.157:10011';    
+    }
+    
+    window.config = {
+        ...window.config,
+        env:'dev',
+        address:{
+            dev:{
+                commonRequest:realRequestUrl,
+            },
+            integration:'',
+        }
+    }
+    </script>
+    <!-- 
+    <script type="text/javascript" src="./config.js"></script>
+    -->
+</body>
+
+</html>
